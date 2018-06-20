@@ -22,15 +22,28 @@ HydraNode::HydraNode()
 	NVIC_SET_PRIORITY(IRQ_PORTC, 0);
 	NVIC_SET_PRIORITY(IRQ_PORTD, 0);
 	NVIC_SET_PRIORITY(IRQ_PORTE, 0);
-	
+
+	read_id();
+	strip().init();
+	start_clock();
+	led_ready();
+}
+
+void HydraNode::read_id() 
+{
 	id_ = ~(digitalReadFast(PIN_ID0)
-		| (digitalReadFast(PIN_ID1) << 1) 
+		| (digitalReadFast(PIN_ID1) << 1)
 		| (digitalReadFast(PIN_ID2) << 2)) & 0x7;
+}
+
+void HydraNode::start_clock()
+{
 	analogWriteFrequency(PIN_CLOCK, FREQ);
 	analogWrite(PIN_CLOCK, 128);
+}
 
-	strip().init();
-	FastLED.setMaxRefreshRate(strip().getMaxRefreshRate(), true);
+void HydraNode::led_ready()
+{
 	pinMode(LED_BUILTIN, OUTPUT);
 	digitalWrite(LED_BUILTIN, HIGH);
 }

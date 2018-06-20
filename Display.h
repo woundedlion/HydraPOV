@@ -27,17 +27,17 @@ public:
 template <typename E>
 void Display::run(unsigned int secs)
 {
+	HydraNode::Sync sync;
 	E effect(node_);
 	effect_ = &effect; // pointer for ISR access
+	sync.wait();
 	node_.attach();
 	elapsedMillis duration;
 	while (duration < (static_cast<unsigned>(secs * 1000))) {
 		HydraNode::Sync sync;
-		elapsedMicros duration2;
 		effect.draw_frame();
 		Serial.println("Wait");
 		sync.wait();
-		Serial.println(duration2);
 		Serial.println("wait done");
 		while (!effect.ready()) {}
 		Serial.println("Frame advance");

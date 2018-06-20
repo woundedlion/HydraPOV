@@ -22,6 +22,10 @@ private:
 	int id_ = -1;
 	SK9822Controller<PIN_SPI_DATA, PIN_SPI_CLOCK, BGR, DATA_RATE_MHZ(24)> strip_;
 
+	void read_id();
+	void start_clock();
+	void led_ready();
+
 public:
 
 	static const int W = 288;
