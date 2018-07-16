@@ -10,9 +10,9 @@ FASTRUN void Display::draw_column_ISR()
 	CRGB *leds = d.effect().column(d.x_);
 	strip.show(leds, HydraNode::H, 255);
 	if (d.effect().show_bg()) {
-		strip.showColor(CRGB::Black); 
+		strip.showColor(CRGB::Black, HydraNode::H, 0); 
 	}
-	if (d.x_++ == HydraNode::W) {
+	if (++d.x_ == HydraNode::W) {
 		d.x_ = 0;
 		d.effect().swap();
 	}

@@ -25,8 +25,8 @@ HydraNode::HydraNode()
 
 	read_id();
 	strip().init();
+	FastLED.setMaxRefreshRate(strip().getMaxRefreshRate());
 	start_clock();
-	led_ready();
 }
 
 void HydraNode::read_id() 
@@ -40,12 +40,6 @@ void HydraNode::start_clock()
 {
 	analogWriteFrequency(PIN_CLOCK, FREQ);
 	analogWrite(PIN_CLOCK, 128);
-}
-
-void HydraNode::led_ready()
-{
-	pinMode(LED_BUILTIN, OUTPUT);
-	digitalWrite(LED_BUILTIN, HIGH);
 }
 
 void HydraNode::attach()

@@ -36,11 +36,8 @@ void Display::run(unsigned int secs)
 	while (duration < (static_cast<unsigned>(secs * 1000))) {
 		HydraNode::Sync sync;
 		effect.draw_frame();
-		Serial.println("Wait");
 		sync.wait();
-		Serial.println("wait done");
 		while (!effect.ready()) {}
-		Serial.println("Frame advance");
 	}
 	node_.detach();
 	}
