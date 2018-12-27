@@ -17,7 +17,7 @@ private:
 	static const int PIN_SPI_DATA = 11;
 	static const int PIN_TRIGGER = 2;
 	static const int PIN_CLOCK = 5;
-	static const int FREQ = 288 * 16;
+	static const int FREQ = 20;// 288 * 16;
 
 	int id_ = -1;
 	APA102Controller<PIN_SPI_DATA, PIN_SPI_CLOCK, BGR, DATA_RATE_MHZ(16)> strip_;

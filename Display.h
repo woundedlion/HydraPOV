@@ -27,17 +27,15 @@ public:
 template <typename E>
 void Display::run(unsigned int secs)
 {
-	HydraNode::Sync sync;
 	E effect(node_);
 	effect_ = &effect; // pointer for ISR access
-	sync.wait();
 	node_.attach();
 	elapsedMillis duration;
 	while (duration < (static_cast<unsigned>(secs * 1000))) {
 		HydraNode::Sync sync;
 		effect.draw_frame();
-		sync.wait();
 		while (!effect.ready()) {}
+		sync.wait();
 	}
 	node_.detach();
 	}

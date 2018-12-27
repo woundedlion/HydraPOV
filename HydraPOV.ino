@@ -9,11 +9,11 @@ void setup()
 	Display::instance_ = new Display();
 	Serial.print("ID ");
 	Serial.print(Display::instance_->node().id());
-	Serial.println(" initialized");
+	Serial.println("Initialized");
 }
 
 void loop()
 {
 	Display& d = *Display::instance_;
-	d.run<Spiral>(60);
+	d.run<Spiral>(15);
 }

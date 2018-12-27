@@ -21,7 +21,6 @@ public:
 	virtual bool show_bg() = 0;
 	
 	inline CRGB* column(int x) {
-		CRGB p = bufs_[prev_][x][node_.y_offset()];
 		return &bufs_[prev_][x][node_.y_offset()];
 	}
 
