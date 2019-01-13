@@ -48,12 +48,16 @@ class Cursor
 {
 public:
 
-	Cursor(Effect& effect) : effect_(effect) {
+	Cursor(Effect& effect) : effect_(effect),
+		sync_(!effect_.cur_)
+	{
 		effect_.cur_ = !effect_.cur_;
 	}
 
 	~Cursor() {
 		effect_.next_ = effect_.cur_;
+		while (!effect_.ready()) {}
+		sync_.wait();
 	}
 
 	inline CRGB(&operator()())[HydraNode::W][144]{
@@ -63,6 +67,7 @@ public:
 private:
 
 	Effect & effect_;
+	HydraNode::Sync sync_;
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////

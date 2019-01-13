@@ -7,16 +7,23 @@ class Barrier
 {
 public:
 
-	Barrier() 
+	Barrier(int id) :
+		pin_wait_(PIN_WAIT + id),
+		pin_ready_(PIN_READY + id)
 	{
-		digitalWriteFast(PIN_READY, HIGH);
+		digitalWriteFast(pin_ready_, HIGH);
 	}
 
 	void wait()
 	{
-		digitalWriteFast(PIN_READY, LOW);
-		while (digitalReadFast(PIN_WAIT)) {}
+		digitalWriteFast(pin_ready_, LOW);
+		while (digitalReadFast(pin_wait_)) {}
 	}
+
+private:
+
+	int pin_wait_;
+	int pin_ready_;
 };
 
 #endif
