@@ -8,6 +8,8 @@ HydraNode::HydraNode()
 {
 	pinMode(PIN_READY, OUTPUT);
 	pinMode(PIN_WAIT, INPUT_PULLDOWN);
+	pinMode(PIN_READY + 1, OUTPUT);
+	pinMode(PIN_WAIT + 1, INPUT_PULLDOWN);
 	pinMode(PIN_ID0, INPUT_PULLUP);
 	pinMode(PIN_ID1, INPUT_PULLUP);
 	pinMode(PIN_ID2, INPUT_PULLUP);

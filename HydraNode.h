@@ -9,7 +9,7 @@ class HydraNode
 private:
 
 	static const int PIN_READY = 24;
-	static const int PIN_WAIT = 25;
+	static const int PIN_WAIT = 26;
 	static const int PIN_ID0 = 21;
 	static const int PIN_ID1 = 22;
 	static const int PIN_ID2 = 23;
@@ -29,6 +29,7 @@ public:
 
 	static const int W = 288;
 	static const int H = 48;
+	static const int PIXELS = 144;
 	typedef Barrier<PIN_READY, PIN_WAIT> Sync;
 
 	HydraNode();

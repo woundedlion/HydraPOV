@@ -41,7 +41,7 @@ protected:
 private:
 
 	volatile int prev_= 0, cur_ = 0, next_ = 0;
-	CRGB bufs_[2][HydraNode::W][144];
+	CRGB bufs_[2][HydraNode::W][HydraNode::PIXELS];
 };
 
 class Cursor
@@ -60,7 +60,7 @@ public:
 		sync_.wait();
 	}
 
-	inline CRGB(&operator()())[HydraNode::W][144]{
+	inline CRGB(&operator()())[HydraNode::W][HydraNode::PIXELS]{
 		return effect_.bufs_[effect_.cur_];
 	}
 
