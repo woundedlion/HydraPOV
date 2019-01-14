@@ -14,6 +14,6 @@ FASTRUN void Display::draw_column_ISR()
 	}
 	if (++d.x_ == HydraNode::W) {
 		d.x_ = 0;
-		d.effect().swap();
+		d.effect().advance();
 	}
  }

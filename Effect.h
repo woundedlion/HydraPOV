@@ -28,7 +28,7 @@ public:
 		return prev_ == next_;
 	}
 
-	inline void swap() {
+	inline void advance() {
 		Serial.print("swap: ");
 		Serial.println(millis());
 		prev_ = next_;
