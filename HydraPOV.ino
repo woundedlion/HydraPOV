@@ -15,5 +15,6 @@ void setup()
 void loop()
 {
 	Display& d = *Display::instance_;
-	d.run<Spiral>(15);
+	d.run<Test1>(15);
+	d.run<Test2>(15);
 }

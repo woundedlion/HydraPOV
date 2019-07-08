@@ -6,10 +6,10 @@
 
 HydraNode::HydraNode()
 {
-	pinMode(PIN_READY, OUTPUT);
-	pinMode(PIN_WAIT, INPUT_PULLDOWN);
-	pinMode(PIN_READY + 1, OUTPUT);
-	pinMode(PIN_WAIT + 1, INPUT_PULLDOWN);
+	pinMode(FRAME_SYNC_PIN_READY, OUTPUT);
+	pinMode(FRAME_SYNC_PIN_WAIT, INPUT_PULLDOWN);
+	delay(2000);
+	digitalWriteFast(FRAME_SYNC_PIN_READY, HIGH);
 	pinMode(PIN_ID0, INPUT_PULLUP);
 	pinMode(PIN_ID1, INPUT_PULLUP);
 	pinMode(PIN_ID2, INPUT_PULLUP);

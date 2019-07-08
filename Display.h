@@ -10,11 +10,14 @@ private:
 	static const int W = 288;
 	static const int H = 144;
 	int x_ = 0;
+	HydraNode::FrameSync sync_;
 
 public:
 
+	Display() {}
 	static Display *instance_;
 	static void draw_column_ISR();
+	static void advance_ISR();
 	HydraNode node_;
 	Effect *effect_;
 
@@ -27,6 +30,8 @@ public:
 template <typename E>
 void Display::run(unsigned int secs)
 {
+	HydraNode::FrameSync sync_;
+	sync_.wait();
 	E effect(node_);
 	effect_ = &effect; // pointer for ISR access
 	node_.attach();
@@ -35,6 +40,7 @@ void Display::run(unsigned int secs)
 		effect.draw_frame();
 	}
 	node_.detach();
-	}
+}
+
 #endif
 
